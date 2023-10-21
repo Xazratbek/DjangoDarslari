@@ -1,4 +1,5 @@
 # DjangoDarslari
-YouTubedagi Oybek Nuriddinov tomonidan o'rgatilgan django darslarida yozilgan barcha kodlar bitta loyihada
+YouTubedagi Oybek Nuriddinov tomonidan o'rgatilgan va yozilgan barcha kodlar bitta repoda.
+Undan tashqari mustaqil o'rgangan bilimlarim asosida ushbu loyiha rivojlantirilgan va u kodlar ham manashuyerda
+Bu xozircha boshlang'ich README.md file max bu loyihani rivojlantirib mukammal qilganimdan so'ng yangilayman
 
-Ushbu kodda django sintaksisdan tashqari video darslar davomida yaratilgan loyiha: " Bitiruvchi dasturchini top " loyihasi kodi ham joy olgan va mustaqil o'rgangan bilimlarim asosida rivojlantirilgan barcha kodlar manashuyerda 
