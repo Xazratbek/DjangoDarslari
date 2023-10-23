@@ -14,9 +14,10 @@
         </div>
 
         <form action="{% url 'register_user' %}" method="POST" class="form auth__form">
-            {% csrf_token %}
+
             <!-- Input:Text -->
             {% for f in form %}
+            {% csrf_token %}
 
             <div class="form__field">
                 <label for="formInput#text">{{f.label}} </label>

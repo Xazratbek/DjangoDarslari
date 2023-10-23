@@ -10,8 +10,8 @@ from django.db.models import Q
 def projects(request):
     projects = Project.objects.all()
     q = request.GET.get("q")
-
     if q:
+        q = str(q).strip()
         projects = projects.filter(Q(title__icontains=q) | Q(description__icontains=q))
 
     p = Paginator(projects, 9)

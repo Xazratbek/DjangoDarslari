@@ -13,6 +13,7 @@ def profiles(request):
     users = Profil.objects.exclude(user__username="admin")
     q = request.GET.get("q")
     if q:
+        q = str(q).strip()
         users = Profil.objects.filter(
             Q(name__icontains=q)
             | Q(email__icontains=q)

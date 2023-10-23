@@ -847,8 +847,8 @@ img {
 }
 
 .icon {
-    width: 24px; /* Adjust the width and height as needed */
-    height: 24px;
-    background-image: url('https://example.com/path/to/your-icon.png'); /* Replace with your icon's URL */
+  width: 24px; /* Adjust the width and height as needed */
+  height: 24px;
+  background-image: url('https://example.com/path/to/your-icon.png'); /* Replace with your icon's URL */
     background-size: cover;
-}
+  }
