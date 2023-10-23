@@ -1,6 +1,6 @@
 {% extends 'main.html' %}
 {% load static %}
-
+{% load social_share %}
 
 {% block content %}
 <main class="profile my-md">
@@ -62,6 +62,8 @@
                         </ul>
 
                         <a href="#" class="btn btn--sub btn--lg">Habar jo'nating </a>
+
+                        {% post_to_telegram "Foydalanuvchi: {{user.user.username}}. Link: {{ user.get_absolute_url }}" object_or_url 'Telegramda ulashish 🔗' %}
                     </div>
                 </div>
             </div>

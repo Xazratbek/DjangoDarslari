@@ -3,20 +3,37 @@ from .models import Project, Comment
 from .forms import ProjectForm, CommentForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.core.paginator import Paginator
+from django.db.models import Q
 
 
 def projects(request):
     projects = Project.objects.all()
+    q = request.GET.get("q")
+
+    if q:
+        projects = projects.filter(Q(title__icontains=q) | Q(description__icontains=q))
+
+    p = Paginator(projects, 9)
+    page = request.GET.get("page")
+    project = p.get_page(page)
+
     context = {
         "projects": projects,
+        "pagination": project,
+        "nums": "s" * p.num_pages,
+        "query": q,
     }
-    return render(request, "project/projects.html", context)
+    return render(
+        request,
+        "project/projects.html",
+        context,
+    )
 
 
 def get_project(request, id):
     project = get_object_or_404(Project, id=id)
     comments = Comment.objects.filter(project=project)
-
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():

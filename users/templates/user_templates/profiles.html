@@ -11,10 +11,10 @@
             </div>
 
             <div class="hero-section__search">
-                <form class="form" action="#" method="get">
+                <form class="form" action="{% url "profiles" %}" method="GET">
                     <div class="form__field">
                         <label for="formInput#search">Bitiruvchilarni top </label>
-                        <input class="input input--text" id="formInput#search" type="text" name="text"
+                        <input class="input input--text" id="formInput#search" type="text" name="q"
                             placeholder="Bitiruvchi ismi bilan top" />
                     </div>
 
@@ -27,7 +27,7 @@
     <section class="devlist">
         <div class="container">
             <div class="grid grid--three">
-                {% for user in users %}
+                {% for user in pagination %}
                     <div class="column card">
                         <div class="dev">
                             <a href="{% url 'get_profile' user.id %}" class="card__body">
@@ -61,19 +61,22 @@
 
     <div class="pagination">
         <ul class="container">
-            <li><a href="#" class="btn btn--disabled">&#10094; Orqaga</a></li>
-            <li><a href="#" class="btn btn--sub">01</a></li>
-            <li><a href="#" class="btn">02</a></li>
-            <li><a href="#" class="btn">03</a></li>
-            <li><a href="#" class="btn">04</a></li>
-            <li><a href="#" class="btn">05</a></li>
-            <li><a href="#" class="btn">06</a></li>
-            <li><a href="#" class="btn">07</a></li>
-            <li><a href="#" class="btn">08</a></li>
-            <li><a href="#" class="btn">09</a></li>
-            <li><a href="#" class="btn">10</a></li>
-            <li><a href="#" class="btn">Oldinga &#10095;</a></li>
+                {% if pagination.has_previous %}
+                    <li><a href="?page={{ pagination.previous_page_number }}{% if query %}&q={{ query }}{% endif %}" class="btn">&#10094; Orqaga</a></li>
+                {% else %}
+                    <li><a href="" class="btn btn--disabled">&#10094; Orqaga</a></li>
+                {% endif %}
+                    {% for page in nums %}
+                        <li><a href="?page={{ forloop.counter }}{% if query %}&q={{ query }}{% endif %}" class="btn btn--sub">{{ forloop.counter }}</a></li>
+                    {% endfor %}
+                {% if pagination.has_next %}
+                    <li><a href="?page={{ pagination.next_page_number }}{% if query %}&q={{ query }}{% endif %}" class="btn">Oldinga &#10095;</a></li>
+                {% else %}
+                    <li><a href="" class="btn btn--disabled">Oldinga &#10095;</a></li>
+                {% endif %}
         </ul>
+        <br>
+        <center><footer><b>{{ pagination }}</b></footer></center>
     </div>
 </main>
 {% endblock %}

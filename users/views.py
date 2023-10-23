@@ -4,12 +4,33 @@ from .models import Profil, Skill
 from django.contrib import messages
 from .forms import CustomUserCreationForm, CustomProfilCreationForm, SkillForm
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
+from django.db.models import Q
 
 
 # Create your views here.
 def profiles(request):
     users = Profil.objects.exclude(user__username="admin")
-    context = {"users": users}
+    q = request.GET.get("q")
+    if q:
+        users = Profil.objects.filter(
+            Q(name__icontains=q)
+            | Q(email__icontains=q)
+            | Q(user__username__icontains=q)
+            | Q(user__first_name__icontains=q)
+            | Q(user__last_name__icontains=q)
+        )
+
+    p = Paginator(users, 9)
+    page = request.GET.get("page")
+    user = p.get_page(page)
+    context = {
+        "users": users,
+        "pagination": user,
+        "nums": "s" * p.num_pages,
+        "query": q,
+    }
+
     return render(request, "user_templates/profiles.html", context)
 
 

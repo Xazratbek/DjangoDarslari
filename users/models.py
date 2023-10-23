@@ -1,9 +1,7 @@
 import uuid
 from django.db import models
 from django.contrib.auth.models import User
-
-
-# Create your models here.
+from django.urls import reverse
 
 
 class Profil(models.Model):
@@ -31,6 +29,9 @@ class Profil(models.Model):
 
     def __str__(self) -> str:
         return str(self.name)
+
+    def get_absolute_url(self):
+        return reverse("get_profile", args=[str(self.id)])
 
 
 class Skill(models.Model):
