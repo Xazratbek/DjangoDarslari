@@ -12,3 +12,5 @@ va boshqalar...
 Darsdan tashqari qilingan ishlari:
 1. Projects va Profiles uchun pagination va ma'lumot qidirish funksiyasi
 2. Saytga tashrif buyuruvchilar agar O'zbekiston xududidan (yoki oldindan belgilangan xududdan) bo'lmasa saytga kirishni cheklash uchun Middleware
+3. Django captcha qo'shildi
+4. 
