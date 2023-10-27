@@ -36,8 +36,9 @@ def profiles(request):
 
 
 def get_profile(request, id):
-    user = Profil.objects.get(id=id)
+    user = get_object_or_404(Profil, id=id)
     context = {"user": user}
+
     return render(request, "user_templates/profile.html", context)
 
 
@@ -54,9 +55,10 @@ def login_user(request):
             login(request, user)
             messages.success(request, "Tizimga hush kelibsiz ✅")
             return redirect("profiles")
+
         else:
             messages.error(request, "Bunday login va parol mavjud emas ❌")
-
+            return redirect("login_user")
     else:
         return render(request, "user_templates/login.html")
 

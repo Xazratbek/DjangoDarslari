@@ -28,6 +28,7 @@ class IPAccessControlMiddleware:
         return response
 
     def your_ip_check_function(self, client_ip):
+        print(client_ip)
         try:
             if client_ip == "127.0.0.1":
                 return True

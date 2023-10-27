@@ -1,6 +1,7 @@
 {% extends 'main.html' %}
 {% load static %}
 {% load social_share %}
+{% load hitcount_tags %}
 
 {% block content %}
 <main class="profile my-md">
@@ -9,7 +10,7 @@
             <div class="column column--1of3">
                 <div class="card text-center">
                     <div class="card__body dev">
-                        <img class="avatar avatar--xl" src="{{user.image.url}}" />
+                        <img class="avatar avatar--xl" src="{{user.image.url}}"/>
                         <h2 class="dev__name">{{user}}</h2>
                         <p class="dev__title">{{user.info}}</p>
                         <p class="dev__location">{{user.location}}</p>

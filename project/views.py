@@ -84,7 +84,6 @@ def edit_project(request, id):
     try:
         project = profil.project_set.get(id=id)
         form = ProjectForm(instance=project)
-        print(form)
         if request.method == "POST":
             form = ProjectForm(request.POST, request.FILES, instance=project)
             if form.is_valid():
