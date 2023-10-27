@@ -14,4 +14,3 @@ Darsdan tashqari qilingan ishlari:
 2. Saytga tashrif buyuruvchilar agar O'zbekiston xududidan (yoki oldindan belgilangan xududdan) bo'lmasa saytga kirishni cheklash uchun Middleware
 3. Django captcha qo'shildi
 4. Admin panelni jazzmin orqali o'zgartirildi
-5. Userlar profili va Projectlarga Hitcount ya'ni ko'rishlar soni qo'shildi
